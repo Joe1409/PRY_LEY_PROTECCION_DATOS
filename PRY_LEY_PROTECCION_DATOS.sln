@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1145
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "PRY_LEY_PROTECCION_DATOS", "PRY_LEY_PROTECCION_DATOS\PRY_LEY_PROTECCION_DATOS.dtproj", "{E15CFB67-E7B3-438B-A3FA-46439B6B2BC7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E15CFB67-E7B3-438B-A3FA-46439B6B2BC7}.Development|Default.ActiveCfg = Development
+		{E15CFB67-E7B3-438B-A3FA-46439B6B2BC7}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8D40BBD-1FD4-4349-A5BB-06839842E457}
+	EndGlobalSection
+EndGlobal
