@@ -13,8 +13,8 @@
   DTS:ObjectName="Package_LeyProteccionDatos"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="249"
-  DTS:VersionGUID="{C1472F44-3C4D-442B-A49F-68D13373C072}">
+  DTS:VersionBuild="257"
+  DTS:VersionGUID="{B0B0D0E8-8BE7-48DE-8F58-3A88014F4BBE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -221,14 +221,13 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{1F4E9750-B550-487C-ABB7-BC2CE149751E}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT '27875420' FROM DUAL&quot;"
+      DTS:DTSID="{DF7D492B-9C64-4100-84C4-A70E1922255B}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="v_ListaPersonasParaOracleEPG">
       <DTS:VariableValue
-        DTS:DataType="8">SELECT '27875420' FROM DUAL</DTS:VariableValue>
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -271,13 +270,13 @@ AND chrt.sgrchrt_term_code_eff =
       WHERE chrt2.sgrchrt_pidm = chrt.sgrchrt_pidm)
 AND adid.goradid_adid_code = 9
 AND adi2.goradid_adid_code = 6
-AND adi2.goradid_additional_id IN (SELECT '27875420' FROM DUAL)</DTS:VariableValue>
+AND adi2.goradid_additional_id IN ()</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{0DC053B6-8058-4B6D-8BC5-A6DCF22250EA}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT DISTINCT&#xA;      PER.COD_PERSONA, &#xA;      PER.TIPO_DOCUMENTO,&#xA;      PER.DOCUMEN_IDENTIDA,&#xA;      PER.DIRECCION_EMAIL AS EMAIL_PRINCIPAL,&#xA;      PER.DIRECCION_EMAIL2 AS EMAIL_SECUNDARIO,&#xA;&#x9;  PER.TELEFONO_CASA,&#xA;&#x9;  PER.TELEFONO_CASA2,&#xA;&#x9;  PER.TELEFONO_MOVIL,&#xA;&#x9;  AL.ALU AS COD_ALUMNO,&#xA;&#x9;  AL.LINEA AS COD_LINEA_NEGOCIO,&#xA;&#x9;  AL.MODAL AS COD_MODALIDAD_ESTUDIO,&#xA;&#x9;  A.COD_ALUMNO AS COD_ALUMNO_EGRESO,&#xA;&#x9;  DOC.COD_DOCENTE,&#xA;&#x9;  DOC.IND_ACTIVO AS IND_DOCENTE_ACTIVO,&#xA;      CASE &#xA;          WHEN PER.ESTADO_PERSONA = 'A' THEN 'ACTIVO'&#xA;          WHEN PER.ESTADO_PERSONA = 'I' THEN 'INACTIVO'&#xA;          WHEN PER.ESTADO_PERSONA IS NULL THEN 'NO EXISTE EN EL SISTEMA' &#xA;      END AS ESTADO_PERSONA,&#xA;&#xA;      CASE&#xA;          WHEN PER.DIRECCION_EMAIL IS NOT NULL THEN 'SI'&#xA;          ELSE 'NO'&#xA;      END AS TIENE_CORREO_PRINCIPAL,&#xA;&#xA;      CASE&#xA;          WHEN PER.DIRECCION_EMAIL2 IS NOT NULL THEN 'SI'&#xA;          ELSE 'NO'&#xA;      END AS TIENE_CORREO_SECUNDARIO,&#xA;&#xA;      CASE &#xA;          WHEN (PER.TELEFONO_CASA  IS NOT NULL) THEN 'SI'&#xA;          ELSE 'NO' &#xA;      END AS TIENE_TELEFONO_FIJO,&#xA;&#xA;      CASE &#xA;          WHEN (PER.TELEFONO_MOVIL IS NOT NULL ) THEN 'SI'&#xA;          ELSE 'NO' &#xA;      END AS TIENE_CELULAR,&#xA;&#xA;      CASE &#xA;          WHEN (PER.TELEFONO_CASA2 IS NOT NULL) THEN 'SI'&#xA;          ELSE 'NO' &#xA;      END AS TIENE_TELEFONO_OPCIONAL,&#xA;      CASE &#xA;          WHEN POS.COD_PERSONA IS NOT NULL THEN 'SI'&#xA;          ELSE 'NO'&#xA;      END AS ES_POSTULANTE,&#xA;&#xA;      CASE &#xA;          WHEN INC.COD_PERSONA IS NOT NULL THEN 'SI'&#xA;          ELSE 'NO'&#xA;      END AS ES_INCORPORADO,&#xA;      &#xA;      CASE &#xA;          WHEN AL.ALU IS NOT NULL THEN 'SI' || '-' || AL.LINEA || '-'|| AL.MODAL || '-'|| AL.ALU&#xA;          ELSE 'NO'&#xA;      END AS ES_ALUMNO_AC_FC,&#xA;      &#xA;      CASE &#xA;          WHEN A.COD_ALUMNO IS NOT NULL THEN 'SI'&#xA;          ELSE 'NO'&#xA;      END AS ES_EGRESADO,&#xA;      CASE &#xA;          WHEN DOC.COD_DOCENTE IS NOT NULL THEN 'SI'&#xA;          ELSE 'NO'&#xA;      END AS ES_DOCENTE,&#xA;&#xA;      CASE &#xA;            WHEN (ULT.ULT_PER IS NOT NULL AND AL.ALU IS NOT NULL )THEN ULT.ULT_PER&#xA;            WHEN (ULT.ULT_PER IS NULL AND AL.ALU IS NULL) THEN 'NO ES ALUMNO PREGRADO/ EPE'&#xA;      END AS ULTIMO_PERIODO_MATRICULA,&#xA;&#xA;      CASE &#xA;          WHEN DOC.IND_ACTIVO = 'SI' THEN 'SI'&#xA;          WHEN DOC.IND_ACTIVO = 'NO' THEN 'NO'&#xA;          WHEN DOC.IND_ACTIVO IS NULL THEN 'NO ES DOCENTE'&#xA;      END  AS DOCENTE_ACTIVO&#xA;&#xA;FROM PERSONA PER &#xA;     LEFT JOIN (SELECT DISTINCT COD_PERSONA FROM POSTULANTE) POS&#xA;          ON PER.COD_PERSONA = POS.COD_PERSONA&#xA;&#xA;     LEFT JOIN (SELECT DISTINCT COD_PERSONA FROM POSTULANTE WHERE ESTADO IN ('AD')) INC&#xA;          ON PER.COD_PERSONA = INC.COD_PERSONA&#xA;&#xA;     LEFT JOIN (SELECT ALUM.COD_LINEA_NEGOCIO AS LINEA ,ALUM.COD_ALUMNO AS ALU, ALUM.COD_PERSONA AS COD_PER, MAT.COD_MODAL_EST AS MODAL&#xA;                FROM ALUMNO ALUM&#xA;                     INNER JOIN MATRICULA MAT&#xA;                        ON ALUM.COD_LINEA_NEGOCIO = MAT.COD_LINEA_NEGOCIO AND ALUM.COD_ALUMNO = MAT.COD_ALUMNO AND MAT.COD_LINEA_NEGOCIO = 'U'&#xA;                        AND MAT.COD_MODAL_EST IN ('AC','FC') AND ALUM.COD_LINEA_NEGOCIO = 'U') AL&#xA;          ON AL.COD_PER = PER.COD_PERSONA&#xA;&#xA;     LEFT JOIN LOG_EGRESO A&#xA;          ON AL.ALU = A.COD_ALUMNO &#xA;&#xA;     LEFT JOIN DOCENTE DOC&#xA;          ON PER.COD_PERSONA = DOC.COD_PERSONA&#xA;&#xA;     LEFT JOIN (SELECT DISTINCT MAT.COD_LINEA_NEGOCIO AS COD_LI, MAT.COD_ALUMNO AS COD_ALU, A.COD_PERSONA AS PER, MAX(MAT.COD_PERIOD_MAT)AS ULT_PER &#xA;                FROM MATRICULA MAT &#xA;                     LEFT JOIN PRODUCTO P &#xA;                        ON MAT.COD_LINEA_NEGOCIO = P.COD_LINEA_NEGOCIO AND MAT.COD_PRODUC_MAT = P.COD_PRODUCTO &#xA;                     LEFT JOIN ALUMNO A&#xA;                        ON MAT.COD_ALUMNO = A.COD_ALUMNO AND MAT.COD_LINEA_NEGOCIO = A.COD_LINEA_NEGOCIO&#xA;                WHERE MAT.COD_LINEA_NEGOCIO = 'U' &#xA;                AND MAT.COD_MODAL_EST IN ('FC','AC') &#xA;                AND P.ES_CARRERA = 'SI' &#xA;                GROUP BY MAT.COD_LINEA_NEGOCIO, MAT.COD_ALUMNO, A.COD_PERSONA) ULT&#xA;          ON PER.COD_PERSONA = ULT.PER&#xA;&#xA;WHERE PER.ESTADO_PERSONA = 'A'&#xA;AND (PER.TIPO_DOCUMENTO,PER.DOCUMEN_IDENTIDA) IN &#xA;(&quot; +  @[User::v_ListaPersonasParaOracle] + &quot;)&quot;"
+      DTS:Expression="&quot;SELECT DISTINCT&#xA;      PER.COD_PERSONA, &#xA;      PER.TIPO_DOCUMENTO,&#xA;      PER.DOCUMEN_IDENTIDA,&#xA;      PER.DIRECCION_EMAIL AS EMAIL_PRINCIPAL,&#xA;      PER.DIRECCION_EMAIL2 AS EMAIL_SECUNDARIO,&#xA;&#x9;  PER.TELEFONO_CASA,&#xA;&#x9;  PER.TELEFONO_CASA2,&#xA;&#x9;  PER.TELEFONO_MOVIL,&#xA;&#x9;  AL.ALU AS COD_ALUMNO,&#xA;&#x9;  AL.LINEA AS COD_LINEA_NEGOCIO,&#xA;&#x9;  AL.MODAL AS COD_MODALIDAD_ESTUDIO,&#xA;&#x9;  A.COD_ALUMNO AS COD_ALUMNO_EGRESO,&#xA;&#x9;  DOC.COD_DOCENTE,&#xA;&#x9;  DOC.IND_ACTIVO AS IND_DOCENTE_ACTIVO,&#xA;      CASE &#xA;          WHEN PER.ESTADO_PERSONA = 'A' THEN 'ACTIVO'&#xA;          WHEN PER.ESTADO_PERSONA = 'I' THEN 'INACTIVO'&#xA;          WHEN PER.ESTADO_PERSONA IS NULL THEN 'NO EXISTE EN EL SISTEMA' &#xA;      END AS ESTADO_PERSONA,&#xA;&#xA;      CASE&#xA;          WHEN PER.DIRECCION_EMAIL IS NOT NULL THEN 'SI'&#xA;          ELSE 'NO'&#xA;      END AS TIENE_CORREO_PRINCIPAL,&#xA;&#xA;      CASE&#xA;          WHEN PER.DIRECCION_EMAIL2 IS NOT NULL THEN 'SI'&#xA;          ELSE 'NO'&#xA;      END AS TIENE_CORREO_SECUNDARIO,&#xA;&#xA;      CASE &#xA;          WHEN (PER.TELEFONO_CASA  IS NOT NULL) THEN 'SI'&#xA;          ELSE 'NO' &#xA;      END AS TIENE_TELEFONO_FIJO,&#xA;&#xA;      CASE &#xA;          WHEN (PER.TELEFONO_MOVIL IS NOT NULL ) THEN 'SI'&#xA;          ELSE 'NO' &#xA;      END AS TIENE_CELULAR,&#xA;&#xA;      CASE &#xA;          WHEN (PER.TELEFONO_CASA2 IS NOT NULL) THEN 'SI'&#xA;          ELSE 'NO' &#xA;      END AS TIENE_TELEFONO_OPCIONAL,&#xA;      CASE &#xA;          WHEN POS.COD_PERSONA IS NOT NULL THEN 'SI'&#xA;          ELSE 'NO'&#xA;      END AS ES_POSTULANTE,&#xA;&#xA;      CASE &#xA;          WHEN INC.COD_PERSONA IS NOT NULL THEN 'SI'&#xA;          ELSE 'NO'&#xA;      END AS ES_INCORPORADO,&#xA;      &#xA;      CASE &#xA;          WHEN AL.ALU IS NOT NULL THEN 'SI' || '-' || AL.LINEA || '-'|| AL.MODAL || '-'|| AL.ALU&#xA;          ELSE 'NO'&#xA;      END AS ES_ALUMNO_AC_FC,&#xA;      &#xA;      CASE &#xA;          WHEN A.COD_ALUMNO IS NOT NULL THEN 'SI'&#xA;          ELSE 'NO'&#xA;      END AS ES_EGRESADO,&#xA;      CASE &#xA;          WHEN DOC.COD_DOCENTE IS NOT NULL THEN 'SI'&#xA;          ELSE 'NO'&#xA;      END AS ES_DOCENTE,&#xA;&#xA;      CASE &#xA;            WHEN (ULT.ULT_PER IS NOT NULL AND AL.ALU IS NOT NULL )THEN ULT.ULT_PER&#xA;            WHEN (ULT.ULT_PER IS NULL AND AL.ALU IS NULL) THEN 'NO ES ALUMNO PREGRADO/ EPE'&#xA;      END AS ULTIMO_PERIODO_MATRICULA,&#xA;&#xA;      CASE &#xA;          WHEN DOC.IND_ACTIVO = 'SI' THEN 'SI'&#xA;          WHEN DOC.IND_ACTIVO = 'NO' THEN 'NO'&#xA;          WHEN DOC.IND_ACTIVO IS NULL THEN 'NO ES DOCENTE'&#xA;      END  AS DOCENTE_ACTIVO,&#xA;      &#xA;      CASE WHEN PAR.PARENTESCO IS NULL THEN 'NO'&#xA;           ELSE PAR.PARENTESCO&#xA;      END AS PARENTESCO&#xA;&#xA;FROM PERSONA PER &#xA;     LEFT JOIN (SELECT DISTINCT COD_PERSONA FROM POSTULANTE) POS&#xA;          ON PER.COD_PERSONA = POS.COD_PERSONA&#xA;&#xA;     LEFT JOIN (SELECT DISTINCT COD_PERSONA FROM POSTULANTE WHERE ESTADO IN ('AD')) INC&#xA;          ON PER.COD_PERSONA = INC.COD_PERSONA&#xA;&#xA;     LEFT JOIN (SELECT ALUM.COD_LINEA_NEGOCIO AS LINEA ,ALUM.COD_ALUMNO AS ALU, ALUM.COD_PERSONA AS COD_PER, MAT.COD_MODAL_EST AS MODAL&#xA;                FROM ALUMNO ALUM&#xA;                     INNER JOIN MATRICULA MAT&#xA;                        ON ALUM.COD_LINEA_NEGOCIO = MAT.COD_LINEA_NEGOCIO AND ALUM.COD_ALUMNO = MAT.COD_ALUMNO AND MAT.COD_LINEA_NEGOCIO = 'U'&#xA;                        AND MAT.COD_MODAL_EST IN ('AC','FC') AND ALUM.COD_LINEA_NEGOCIO = 'U') AL&#xA;          ON AL.COD_PER = PER.COD_PERSONA&#xA;&#xA;     LEFT JOIN LOG_EGRESO A&#xA;          ON AL.ALU = A.COD_ALUMNO &#xA;&#xA;     LEFT JOIN DOCENTE DOC&#xA;          ON PER.COD_PERSONA = DOC.COD_PERSONA&#xA;&#xA;     LEFT JOIN (SELECT DISTINCT MAT.COD_LINEA_NEGOCIO AS COD_LI, MAT.COD_ALUMNO AS COD_ALU, A.COD_PERSONA AS PER, MAX(MAT.COD_PERIOD_MAT)AS ULT_PER &#xA;                FROM MATRICULA MAT &#xA;                     LEFT JOIN PRODUCTO P &#xA;                        ON MAT.COD_LINEA_NEGOCIO = P.COD_LINEA_NEGOCIO AND MAT.COD_PRODUC_MAT = P.COD_PRODUCTO &#xA;                     LEFT JOIN ALUMNO A&#xA;                        ON MAT.COD_ALUMNO = A.COD_ALUMNO AND MAT.COD_LINEA_NEGOCIO = A.COD_LINEA_NEGOCIO&#xA;                WHERE MAT.COD_LINEA_NEGOCIO = 'U' &#xA;                AND MAT.COD_MODAL_EST IN ('FC','AC') &#xA;                AND P.ES_CARRERA = 'SI' &#xA;                GROUP BY MAT.COD_LINEA_NEGOCIO, MAT.COD_ALUMNO, A.COD_PERSONA) ULT&#xA;          ON PER.COD_PERSONA = ULT.PER&#xA;          &#xA;     LEFT JOIN (SELECT COD_PARIENTE, PARENTESCO&#xA;                FROM (&#xA;                        SELECT A.COD_PARIENTE, B.DESCRIPCION AS PARENTESCO,&#xA;                                ROW_NUMBER() OVER (PARTITION BY A.COD_PARIENTE ORDER BY A.DETALLE_PARIENTE DESC) ORDEN&#xA;                        FROM PARENTESCO A&#xA;                                INNER JOIN CON_TIPOPARENTESCO B ON A.DETALLE_PARIENTE = B.CODIGO&#xA;                        WHERE A.DETALLE_PARIENTE IN ('1','2','3','8','12')&#xA;                ) &#xA;                WHERE ORDEN = 1) PAR &#xA;          ON PER.COD_PERSONA = PAR.COD_PARIENTE&#xA;&#xA;WHERE PER.ESTADO_PERSONA = 'A' &#xA;AND (PER.TIPO_DOCUMENTO,PER.DOCUMEN_IDENTIDA) IN &#xA;(&quot; +  @[User::v_ListaPersonasParaOracle] + &quot;)&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="v_QueryPersonasParaOracleSocratesMO">
@@ -360,7 +359,11 @@ AND adi2.goradid_additional_id IN (SELECT '27875420' FROM DUAL)</DTS:VariableVal
           WHEN DOC.IND_ACTIVO = 'SI' THEN 'SI'
           WHEN DOC.IND_ACTIVO = 'NO' THEN 'NO'
           WHEN DOC.IND_ACTIVO IS NULL THEN 'NO ES DOCENTE'
-      END  AS DOCENTE_ACTIVO
+      END  AS DOCENTE_ACTIVO,
+      
+      CASE WHEN PAR.PARENTESCO IS NULL THEN 'NO'
+           ELSE PAR.PARENTESCO
+      END AS PARENTESCO
 
 FROM PERSONA PER 
      LEFT JOIN (SELECT DISTINCT COD_PERSONA FROM POSTULANTE) POS
@@ -393,8 +396,19 @@ FROM PERSONA PER
                 AND P.ES_CARRERA = 'SI' 
                 GROUP BY MAT.COD_LINEA_NEGOCIO, MAT.COD_ALUMNO, A.COD_PERSONA) ULT
           ON PER.COD_PERSONA = ULT.PER
+          
+     LEFT JOIN (SELECT COD_PARIENTE, PARENTESCO
+                FROM (
+                        SELECT A.COD_PARIENTE, B.DESCRIPCION AS PARENTESCO,
+                                ROW_NUMBER() OVER (PARTITION BY A.COD_PARIENTE ORDER BY A.DETALLE_PARIENTE DESC) ORDEN
+                        FROM PARENTESCO A
+                                INNER JOIN CON_TIPOPARENTESCO B ON A.DETALLE_PARIENTE = B.CODIGO
+                        WHERE A.DETALLE_PARIENTE IN ('1','2','3','8','12')
+                ) 
+                WHERE ORDEN = 1) PAR 
+          ON PER.COD_PERSONA = PAR.COD_PARIENTE
 
-WHERE PER.ESTADO_PERSONA = 'A'
+WHERE PER.ESTADO_PERSONA = 'A' 
 AND (PER.TIPO_DOCUMENTO,PER.DOCUMEN_IDENTIDA) IN 
 ()</DTS:VariableValue>
     </DTS:Variable>
@@ -411,7 +425,7 @@ AND (PER.TIPO_DOCUMENTO,PER.DOCUMEN_IDENTIDA) IN
 from matricula m
      inner join alumno a on m.cod_linea_negocio = a.cod_linea_negocio and m.Cod_alumno = a.Cod_alumno
 where m.cod_linea_negocio = 'E'
-And a.cod_persona in (SELECT '27875420' FROM DUAL)</DTS:VariableValue>
+And a.cod_persona in ()</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -2175,6 +2189,430 @@ where i.CaseOriginCode = 11 and i.StateCode = 0</property>
               version="1">
               <components>
                 <component
+                  refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+                  name="ADO NET Destination"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The Destination database table name."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"pdp"."STGA_SOC_MO_DATOS_PERSONA"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                      expressionType="Notify"
+                      name="BatchSize">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                      expressionType="Notify"
+                      name="CommandTimeout">30</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                      expressionType="Notify"
+                      name="UseBulkInsertWhenPossible">true</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Connections[IDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Conn_REPINTETL]"
+                      connectionManagerRefId="Package.ConnectionManagers[Conn_REPINTETL]"
+                      description="Managed connection manager"
+                      name="IDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="ADO NET Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[COD_PERSONA]"
+                          cachedDataType="numeric"
+                          cachedName="COD_PERSONA"
+                          cachedPrecision="15"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[COD_PERSONA]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[COD_PERSONA]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TIPO_DOCUMENTO]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="TIPO_DOCUMENTO"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TIPO_DOCUMENTO]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TIPO_DOCUMENTO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DOCUMEN_IDENTIDA]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="DOCUMEN_IDENTIDA"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DOCUMEN_IDENTIDA]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[DOCUMEN_IDENTIDA]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[EMAIL_PRINCIPAL]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="EMAIL_PRINCIPAL"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[EMAIL_PRINCIPAL]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[EMAIL_PRINCIPAL]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[EMAIL_SECUNDARIO]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="EMAIL_SECUNDARIO"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[EMAIL_SECUNDARIO]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[EMAIL_SECUNDARIO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ESTADO_PERSONA]"
+                          cachedDataType="wstr"
+                          cachedLength="23"
+                          cachedName="ESTADO_PERSONA"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ESTADO_PERSONA]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ESTADO_PERSONA]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TIENE_CORREO_PRINCIPAL]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="TIENE_CORREO_PRINCIPAL"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_CORREO_PRINCIPAL]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TIENE_CORREO_PRINCIPAL]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TIENE_CORREO_SECUNDARIO]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="TIENE_CORREO_SECUNDARIO"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_CORREO_SECUNDARIO]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TIENE_CORREO_SECUNDARIO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TIENE_TELEFONO_FIJO]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="TIENE_TELEFONO_FIJO"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_TELEFONO_FIJO]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TIENE_TELEFONO_FIJO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TIENE_CELULAR]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="TIENE_CELULAR"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_CELULAR]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TIENE_CELULAR]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TIENE_TELEFONO_OPCIONAL]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="TIENE_TELEFONO_OPCIONAL"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_TELEFONO_OPCIONAL]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TIENE_TELEFONO_OPCIONAL]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ES_POSTULANTE]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="ES_POSTULANTE"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ES_POSTULANTE]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ES_POSTULANTE]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ES_INCORPORADO]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="ES_INCORPORADO"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ES_INCORPORADO]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ES_INCORPORADO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ES_ALUMNO_AC_FC]"
+                          cachedDataType="wstr"
+                          cachedLength="17"
+                          cachedName="ES_ALUMNO_AC_FC"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ES_ALUMNO_AC_FC]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ES_ALUMNO_AC_FC]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ES_EGRESADO]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="ES_EGRESADO"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ES_EGRESADO]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ES_EGRESADO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ES_DOCENTE]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="ES_DOCENTE"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ES_DOCENTE]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ES_DOCENTE]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ULTIMO_PERIODO_MATRICULA]"
+                          cachedDataType="wstr"
+                          cachedLength="26"
+                          cachedName="ULTIMO_PERIODO_MATRICULA"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ULTIMO_PERIODO_MATRICULA]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ULTIMO_PERIODO_MATRICULA]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DOCENTE_ACTIVO]"
+                          cachedDataType="wstr"
+                          cachedLength="13"
+                          cachedName="DOCENTE_ACTIVO"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DOCENTE_ACTIVO]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[DOCENTE_ACTIVO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TELEFONO_CASA]"
+                          cachedDataType="wstr"
+                          cachedLength="15"
+                          cachedName="TELEFONO_CASA"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TELEFONO_CASA]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TELEFONO_CASA]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TELEFONO_CASA2]"
+                          cachedDataType="wstr"
+                          cachedLength="15"
+                          cachedName="TELEFONO_CASA2"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TELEFONO_CASA2]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TELEFONO_CASA2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TELEFONO_MOVIL]"
+                          cachedDataType="wstr"
+                          cachedLength="15"
+                          cachedName="TELEFONO_MOVIL"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TELEFONO_MOVIL]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TELEFONO_MOVIL]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[COD_ALUMNO]"
+                          cachedDataType="wstr"
+                          cachedLength="9"
+                          cachedName="COD_ALUMNO"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[COD_ALUMNO]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[COD_ALUMNO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[COD_LINEA_NEGOCIO]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="COD_LINEA_NEGOCIO"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[COD_LINEA_NEGOCIO]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[COD_LINEA_NEGOCIO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[COD_MODALIDAD_ESTUDIO]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="COD_MODALIDAD_ESTUDIO"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[COD_MODALIDAD_ESTUDIO]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[COD_MODALIDAD_ESTUDIO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[COD_ALUMNO_EGRESO]"
+                          cachedDataType="wstr"
+                          cachedLength="9"
+                          cachedName="COD_ALUMNO_EGRESO"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[COD_ALUMNO_EGRESO]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[COD_ALUMNO_EGRESO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[COD_DOCENTE]"
+                          cachedDataType="numeric"
+                          cachedName="COD_DOCENTE"
+                          cachedPrecision="5"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[COD_DOCENTE]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[COD_DOCENTE]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IND_DOCENTE_ACTIVO]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="IND_DOCENTE_ACTIVO"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IND_DOCENTE_ACTIVO]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[IND_DOCENTE_ACTIVO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Fec_carga]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Fec_carga"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FEC_CARGA]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Calcula Fec_Carga.Outputs[Derived Column Output].Columns[Fec_carga]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[PARENTESCO]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="PARENTESCO"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[PARENTESCO]"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[PARENTESCO]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[COD_PERSONA]"
+                          dataType="i4"
+                          name="COD_PERSONA" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TIPO_DOCUMENTO]"
+                          dataType="wstr"
+                          length="3"
+                          name="TIPO_DOCUMENTO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DOCUMEN_IDENTIDA]"
+                          dataType="wstr"
+                          length="50"
+                          name="DOCUMEN_IDENTIDA" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[EMAIL_PRINCIPAL]"
+                          dataType="wstr"
+                          length="50"
+                          name="EMAIL_PRINCIPAL" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[EMAIL_SECUNDARIO]"
+                          dataType="wstr"
+                          length="50"
+                          name="EMAIL_SECUNDARIO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TELEFONO_CASA]"
+                          dataType="wstr"
+                          length="15"
+                          name="TELEFONO_CASA" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TELEFONO_CASA2]"
+                          dataType="wstr"
+                          length="15"
+                          name="TELEFONO_CASA2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TELEFONO_MOVIL]"
+                          dataType="wstr"
+                          length="15"
+                          name="TELEFONO_MOVIL" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[COD_ALUMNO]"
+                          dataType="wstr"
+                          length="9"
+                          name="COD_ALUMNO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[COD_LINEA_NEGOCIO]"
+                          dataType="wstr"
+                          length="1"
+                          name="COD_LINEA_NEGOCIO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[COD_MODALIDAD_ESTUDIO]"
+                          dataType="wstr"
+                          length="2"
+                          name="COD_MODALIDAD_ESTUDIO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[COD_ALUMNO_EGRESO]"
+                          dataType="wstr"
+                          length="9"
+                          name="COD_ALUMNO_EGRESO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[COD_DOCENTE]"
+                          dataType="i4"
+                          name="COD_DOCENTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IND_DOCENTE_ACTIVO]"
+                          dataType="wstr"
+                          length="2"
+                          name="IND_DOCENTE_ACTIVO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ESTADO_PERSONA]"
+                          dataType="wstr"
+                          length="50"
+                          name="ESTADO_PERSONA" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_CORREO_PRINCIPAL]"
+                          dataType="wstr"
+                          length="2"
+                          name="TIENE_CORREO_PRINCIPAL" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_CORREO_SECUNDARIO]"
+                          dataType="wstr"
+                          length="2"
+                          name="TIENE_CORREO_SECUNDARIO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_TELEFONO_FIJO]"
+                          dataType="wstr"
+                          length="2"
+                          name="TIENE_TELEFONO_FIJO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_CELULAR]"
+                          dataType="wstr"
+                          length="2"
+                          name="TIENE_CELULAR" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_TELEFONO_OPCIONAL]"
+                          dataType="wstr"
+                          length="2"
+                          name="TIENE_TELEFONO_OPCIONAL" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ES_POSTULANTE]"
+                          dataType="wstr"
+                          length="2"
+                          name="ES_POSTULANTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ES_INCORPORADO]"
+                          dataType="wstr"
+                          length="2"
+                          name="ES_INCORPORADO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ES_ALUMNO_AC_FC]"
+                          dataType="wstr"
+                          length="50"
+                          name="ES_ALUMNO_AC_FC" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ES_EGRESADO]"
+                          dataType="wstr"
+                          length="2"
+                          name="ES_EGRESADO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ES_DOCENTE]"
+                          dataType="wstr"
+                          length="2"
+                          name="ES_DOCENTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ULTIMO_PERIODO_MATRICULA]"
+                          dataType="wstr"
+                          length="50"
+                          name="ULTIMO_PERIODO_MATRICULA" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DOCENTE_ACTIVO]"
+                          dataType="wstr"
+                          length="50"
+                          name="DOCENTE_ACTIVO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[PARENTESCO]"
+                          dataType="wstr"
+                          length="100"
+                          name="PARENTESCO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FEC_CARGA]"
+                          dataType="dbTimeStamp"
+                          name="FEC_CARGA" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ADO NET Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Calcula Fec_Carga"
                   componentClassID="Microsoft.DerivedColumn"
                   contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -2240,418 +2678,6 @@ where i.CaseOriginCode = 11 and i.StateCode = 0</property>
                           refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Calcula Fec_Carga.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           dataType="i4"
                           lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Calcula Fec_Carga.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA"
-                  componentClassID="Microsoft.ManagedComponentHost"
-                  contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
-                  description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
-                  name="Inserta Tabla STGA_SOC_MO_DATOS_PERSONA"
-                  usesDispositions="true"
-                  version="2">
-                  <properties>
-                    <property
-                      dataType="System.String"
-                      description="The Destination database table name."
-                      expressionType="Notify"
-                      name="TableOrViewName"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"pdp"."STGA_SOC_MO_DATOS_PERSONA"</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
-                      expressionType="Notify"
-                      name="BatchSize">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
-                      expressionType="Notify"
-                      name="CommandTimeout">30</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
-                      expressionType="Notify"
-                      name="UseBulkInsertWhenPossible">true</property>
-                    <property
-                      dataType="System.String"
-                      name="UserComponentTypeName">Microsoft.ADONETDestination</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Connections[IDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[Conn_REPINTETL]"
-                      connectionManagerRefId="Package.ConnectionManagers[Conn_REPINTETL]"
-                      description="Managed connection manager"
-                      name="IDbConnection" />
-                  </connections>
-                  <inputs>
-                    <input
-                      refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input]"
-                      errorRowDisposition="FailComponent"
-                      hasSideEffects="true"
-                      name="ADO NET Destination Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[COD_PERSONA]"
-                          cachedDataType="numeric"
-                          cachedName="COD_PERSONA"
-                          cachedPrecision="15"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[COD_PERSONA]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[COD_PERSONA]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[TIPO_DOCUMENTO]"
-                          cachedDataType="wstr"
-                          cachedLength="3"
-                          cachedName="TIPO_DOCUMENTO"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TIPO_DOCUMENTO]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TIPO_DOCUMENTO]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[DOCUMEN_IDENTIDA]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
-                          cachedName="DOCUMEN_IDENTIDA"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[DOCUMEN_IDENTIDA]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[DOCUMEN_IDENTIDA]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[EMAIL_PRINCIPAL]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
-                          cachedName="EMAIL_PRINCIPAL"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[EMAIL_PRINCIPAL]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[EMAIL_PRINCIPAL]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[EMAIL_SECUNDARIO]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
-                          cachedName="EMAIL_SECUNDARIO"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[EMAIL_SECUNDARIO]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[EMAIL_SECUNDARIO]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[ESTADO_PERSONA]"
-                          cachedDataType="wstr"
-                          cachedLength="23"
-                          cachedName="ESTADO_PERSONA"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ESTADO_PERSONA]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ESTADO_PERSONA]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[TIENE_CORREO_PRINCIPAL]"
-                          cachedDataType="wstr"
-                          cachedLength="2"
-                          cachedName="TIENE_CORREO_PRINCIPAL"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_CORREO_PRINCIPAL]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TIENE_CORREO_PRINCIPAL]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[TIENE_CORREO_SECUNDARIO]"
-                          cachedDataType="wstr"
-                          cachedLength="2"
-                          cachedName="TIENE_CORREO_SECUNDARIO"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_CORREO_SECUNDARIO]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TIENE_CORREO_SECUNDARIO]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[TIENE_TELEFONO_FIJO]"
-                          cachedDataType="wstr"
-                          cachedLength="2"
-                          cachedName="TIENE_TELEFONO_FIJO"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_TELEFONO_FIJO]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TIENE_TELEFONO_FIJO]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[TIENE_CELULAR]"
-                          cachedDataType="wstr"
-                          cachedLength="2"
-                          cachedName="TIENE_CELULAR"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_CELULAR]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TIENE_CELULAR]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[TIENE_TELEFONO_OPCIONAL]"
-                          cachedDataType="wstr"
-                          cachedLength="2"
-                          cachedName="TIENE_TELEFONO_OPCIONAL"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_TELEFONO_OPCIONAL]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TIENE_TELEFONO_OPCIONAL]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[ES_POSTULANTE]"
-                          cachedDataType="wstr"
-                          cachedLength="2"
-                          cachedName="ES_POSTULANTE"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ES_POSTULANTE]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ES_POSTULANTE]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[ES_INCORPORADO]"
-                          cachedDataType="wstr"
-                          cachedLength="2"
-                          cachedName="ES_INCORPORADO"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ES_INCORPORADO]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ES_INCORPORADO]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[ES_ALUMNO_AC_FC]"
-                          cachedDataType="wstr"
-                          cachedLength="17"
-                          cachedName="ES_ALUMNO_AC_FC"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ES_ALUMNO_AC_FC]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ES_ALUMNO_AC_FC]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[ES_EGRESADO]"
-                          cachedDataType="wstr"
-                          cachedLength="2"
-                          cachedName="ES_EGRESADO"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ES_EGRESADO]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ES_EGRESADO]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[ES_DOCENTE]"
-                          cachedDataType="wstr"
-                          cachedLength="2"
-                          cachedName="ES_DOCENTE"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ES_DOCENTE]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ES_DOCENTE]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[ULTIMO_PERIODO_MATRICULA]"
-                          cachedDataType="wstr"
-                          cachedLength="26"
-                          cachedName="ULTIMO_PERIODO_MATRICULA"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ULTIMO_PERIODO_MATRICULA]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[ULTIMO_PERIODO_MATRICULA]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[DOCENTE_ACTIVO]"
-                          cachedDataType="wstr"
-                          cachedLength="13"
-                          cachedName="DOCENTE_ACTIVO"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[DOCENTE_ACTIVO]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[DOCENTE_ACTIVO]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[TELEFONO_CASA]"
-                          cachedDataType="wstr"
-                          cachedLength="15"
-                          cachedName="TELEFONO_CASA"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TELEFONO_CASA]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TELEFONO_CASA]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[TELEFONO_CASA2]"
-                          cachedDataType="wstr"
-                          cachedLength="15"
-                          cachedName="TELEFONO_CASA2"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TELEFONO_CASA2]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TELEFONO_CASA2]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[TELEFONO_MOVIL]"
-                          cachedDataType="wstr"
-                          cachedLength="15"
-                          cachedName="TELEFONO_MOVIL"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TELEFONO_MOVIL]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[TELEFONO_MOVIL]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[COD_ALUMNO]"
-                          cachedDataType="wstr"
-                          cachedLength="9"
-                          cachedName="COD_ALUMNO"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[COD_ALUMNO]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[COD_ALUMNO]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[COD_LINEA_NEGOCIO]"
-                          cachedDataType="wstr"
-                          cachedLength="1"
-                          cachedName="COD_LINEA_NEGOCIO"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[COD_LINEA_NEGOCIO]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[COD_LINEA_NEGOCIO]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[COD_MODALIDAD_ESTUDIO]"
-                          cachedDataType="wstr"
-                          cachedLength="2"
-                          cachedName="COD_MODALIDAD_ESTUDIO"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[COD_MODALIDAD_ESTUDIO]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[COD_MODALIDAD_ESTUDIO]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[COD_ALUMNO_EGRESO]"
-                          cachedDataType="wstr"
-                          cachedLength="9"
-                          cachedName="COD_ALUMNO_EGRESO"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[COD_ALUMNO_EGRESO]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[COD_ALUMNO_EGRESO]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[COD_DOCENTE]"
-                          cachedDataType="numeric"
-                          cachedName="COD_DOCENTE"
-                          cachedPrecision="5"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[COD_DOCENTE]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[COD_DOCENTE]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[IND_DOCENTE_ACTIVO]"
-                          cachedDataType="wstr"
-                          cachedLength="2"
-                          cachedName="IND_DOCENTE_ACTIVO"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[IND_DOCENTE_ACTIVO]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[IND_DOCENTE_ACTIVO]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].Columns[Fec_carga]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="Fec_carga"
-                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[FEC_CARGA]"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Calcula Fec_Carga.Outputs[Derived Column Output].Columns[Fec_carga]" />
-                      </inputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[COD_PERSONA]"
-                          dataType="i4"
-                          name="COD_PERSONA" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TIPO_DOCUMENTO]"
-                          dataType="wstr"
-                          length="3"
-                          name="TIPO_DOCUMENTO" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[DOCUMEN_IDENTIDA]"
-                          dataType="wstr"
-                          length="50"
-                          name="DOCUMEN_IDENTIDA" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[EMAIL_PRINCIPAL]"
-                          dataType="wstr"
-                          length="50"
-                          name="EMAIL_PRINCIPAL" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[EMAIL_SECUNDARIO]"
-                          dataType="wstr"
-                          length="50"
-                          name="EMAIL_SECUNDARIO" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TELEFONO_CASA]"
-                          dataType="wstr"
-                          length="15"
-                          name="TELEFONO_CASA" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TELEFONO_CASA2]"
-                          dataType="wstr"
-                          length="15"
-                          name="TELEFONO_CASA2" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TELEFONO_MOVIL]"
-                          dataType="wstr"
-                          length="15"
-                          name="TELEFONO_MOVIL" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[COD_ALUMNO]"
-                          dataType="wstr"
-                          length="9"
-                          name="COD_ALUMNO" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[COD_LINEA_NEGOCIO]"
-                          dataType="wstr"
-                          length="1"
-                          name="COD_LINEA_NEGOCIO" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[COD_MODALIDAD_ESTUDIO]"
-                          dataType="wstr"
-                          length="2"
-                          name="COD_MODALIDAD_ESTUDIO" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[COD_ALUMNO_EGRESO]"
-                          dataType="wstr"
-                          length="9"
-                          name="COD_ALUMNO_EGRESO" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[COD_DOCENTE]"
-                          dataType="i4"
-                          name="COD_DOCENTE" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[IND_DOCENTE_ACTIVO]"
-                          dataType="wstr"
-                          length="2"
-                          name="IND_DOCENTE_ACTIVO" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ESTADO_PERSONA]"
-                          dataType="wstr"
-                          length="50"
-                          name="ESTADO_PERSONA" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_CORREO_PRINCIPAL]"
-                          dataType="wstr"
-                          length="2"
-                          name="TIENE_CORREO_PRINCIPAL" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_CORREO_SECUNDARIO]"
-                          dataType="wstr"
-                          length="2"
-                          name="TIENE_CORREO_SECUNDARIO" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_TELEFONO_FIJO]"
-                          dataType="wstr"
-                          length="2"
-                          name="TIENE_TELEFONO_FIJO" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_CELULAR]"
-                          dataType="wstr"
-                          length="2"
-                          name="TIENE_CELULAR" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[TIENE_TELEFONO_OPCIONAL]"
-                          dataType="wstr"
-                          length="2"
-                          name="TIENE_TELEFONO_OPCIONAL" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ES_POSTULANTE]"
-                          dataType="wstr"
-                          length="2"
-                          name="ES_POSTULANTE" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ES_INCORPORADO]"
-                          dataType="wstr"
-                          length="2"
-                          name="ES_INCORPORADO" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ES_ALUMNO_AC_FC]"
-                          dataType="wstr"
-                          length="50"
-                          name="ES_ALUMNO_AC_FC" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ES_EGRESADO]"
-                          dataType="wstr"
-                          length="2"
-                          name="ES_EGRESADO" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ES_DOCENTE]"
-                          dataType="wstr"
-                          length="2"
-                          name="ES_DOCENTE" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[ULTIMO_PERIODO_MATRICULA]"
-                          dataType="wstr"
-                          length="50"
-                          name="ULTIMO_PERIODO_MATRICULA" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[DOCENTE_ACTIVO]"
-                          dataType="wstr"
-                          length="50"
-                          name="DOCENTE_ACTIVO" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input].ExternalColumns[FEC_CARGA]"
-                          dataType="dbTimeStamp"
-                          name="FEC_CARGA" />
-                      </externalMetadataColumns>
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Outputs[ADO NET Destination Error Output]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="ADO NET Destination Error Output"
-                      synchronousInputId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -2991,6 +3017,16 @@ where i.CaseOriginCode = 11 and i.StateCode = 0</property>
                           lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[IND_DOCENTE_ACTIVO]"
                           name="IND_DOCENTE_ACTIVO"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[PARENTESCO]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].ExternalColumns[PARENTESCO]"
+                          length="100"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].Columns[PARENTESCO]"
+                          name="PARENTESCO"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -3129,6 +3165,11 @@ where i.CaseOriginCode = 11 and i.StateCode = 0</property>
                           dataType="wstr"
                           length="2"
                           name="IND_DOCENTE_ACTIVO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Output].ExternalColumns[PARENTESCO]"
+                          dataType="wstr"
+                          length="100"
+                          name="PARENTESCO" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -3299,6 +3340,12 @@ where i.CaseOriginCode = 11 and i.StateCode = 0</property>
                           lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Error Output].Columns[DOCENTE_ACTIVO]"
                           name="DOCENTE_ACTIVO" />
                         <outputColumn
+                          refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Error Output].Columns[PARENTESCO]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Error Output].Columns[PARENTESCO]"
+                          name="PARENTESCO" />
+                        <outputColumn
                           refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
                           lineageId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -3319,7 +3366,7 @@ where i.CaseOriginCode = 11 and i.StateCode = 0</property>
               <paths>
                 <path
                   refId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA.Paths[Derived Column Output]"
-                  endId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA.Inputs[ADO NET Destination Input]"
+                  endId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination.Inputs[ADO NET Destination Input]"
                   name="Derived Column Output"
                   startId="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Calcula Fec_Carga.Outputs[Derived Column Output]" />
                 <path
@@ -3676,7 +3723,7 @@ where i.CaseOriginCode = 11 and i.StateCode = 0</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{785AD69C-A1ED-4416-8DD7-0E56CAB85ADA}"
-              SQLTask:SqlStatementSource="DELETE dpa&#xA;FROM [dbo].[PDP_DATOS_PERSONA_ANTISPAM] dpa&#xA;&#x9;&#x9;INNER JOIN [pdp].[STGA_CRM_2015_Incident] i on dpa.TicketNumber = i.TicketNumber&#xA;&#xA;&#xA;INSERT INTO [dbo].[PDP_DATOS_PERSONA_ANTISPAM] (&#xA;&#x9;TICKETNUMBER,&#xA;&#x9;UPC_INDECOPI_EMAILADDRESS1,&#xA;&#x9;UPC_UNIDADNEGOCIOIDNAME,&#xA;&#x9;UPC_ARCO_PETICIONREVOCATORIA,&#xA;&#x9;ESTADO,&#xA;&#x9;EMAIL_PRINCIPAL,&#xA;&#x9;EMAIL_SECUNDARIO,&#xA;&#x9;COD_PERSONA,&#xA;&#x9;ESTADO_PERSONA,&#xA;&#x9;TIENE_CORREO_PRINCIPAL,&#xA;&#x9;TIENE_CORREO_SECUNDARIO,&#xA;&#x9;TIENE_TELEFONO_FIJO,&#xA;&#x9;TIENE_CELULAR,&#xA;&#x9;TIENE_TELEFONO_OPCIONAL,&#xA;&#x9;ES_POSTULANTE,&#xA;&#x9;ES_INCORPORADO,&#xA;&#x9;ES_ALUMNO_AC_FC,&#xA;&#x9;ES_EGRESADO,&#xA;&#x9;ES_DOCENTE,&#xA;&#x9;ULTIMO_PERIODO_MATRICULA,&#xA;&#x9;DOCENTE_ACTIVO,&#xA;&#x9;FEC_CARGA&#xA;)&#xA;&#xA;&#xA;SELECT i.TicketNumber,&#xA;&#x9;&#x9;i.upc_indecopi_emailaddress1,&#xA;&#x9;&#x9;i.upc_unidadnegocioidname,&#xA;&#x9;&#x9;i.upc_arco_peticionrevocatoria,&#xA;&#x9;&#x9;CASE WHEN dp_mo.COD_PERSONA IS NOT NULL THEN 'ENCONTRADO'&#xA;&#x9;&#x9;&#x9; ELSE 'NO ENCONTRADO'&#xA;&#x9;&#x9;END AS ESTADO,&#xA;&#x9;&#x9;dp_mo.EMAIL_PRINCIPAL,&#xA;&#x9;&#x9;dp_mo.EMAIL_SECUNDARIO,&#xA;&#x9;&#x9;dp_mo.COD_PERSONA,&#xA;&#x9;&#x9;dp_mo.ESTADO_PERSONA,&#xA;&#x9;&#x9;dp_mo.TIENE_CORREO_PRINCIPAL,&#xA;&#x9;&#x9;dp_mo.TIENE_CORREO_SECUNDARIO,&#xA;&#x9;&#x9;dp_mo.TIENE_TELEFONO_FIJO,&#xA;&#x9;&#x9;dp_mo.TIENE_CELULAR,&#xA;&#x9;&#x9;dp_mo.TIENE_TELEFONO_OPCIONAL,&#xA;&#x9;&#x9;dp_mo.ES_POSTULANTE,&#xA;&#x9;&#x9;dp_mo.ES_INCORPORADO,&#xA;&#x9;&#x9;dp_mo.ES_ALUMNO_AC_FC,&#xA;&#x9;&#x9;dp_mo.ES_EGRESADO,&#xA;&#x9;&#x9;dp_mo.ES_DOCENTE,&#xA;&#x9;&#x9;dp_mo.ULTIMO_PERIODO_MATRICULA,&#xA;&#x9;&#x9;dp_mo.DOCENTE_ACTIVO,&#xA;&#x9;&#x9;GETDATE() AS FEC_CARGA&#xA;FROM [pdp].[STGA_CRM_2015_Incident] i&#xA;&#x9;&#x9;LEFT JOIN [pdp].[STGA_SOC_MO_DATOS_PERSONA] dp_mo &#xA;&#x9;&#x9;&#x9;on Case When i.upc_indecopi_tipodedocumento = 1 Then 'DNI'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;When i.upc_indecopi_tipodedocumento = 2 Then 'PAS'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;When i.upc_indecopi_tipodedocumento = 3 Then 'CEX'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Else 'OTRO'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;End = dp_mo.TIPO_DOCUMENTO AND i.upc_indecopi_numero = dp_mo.DOCUMEN_IDENTIDA&#xA;&#xA;&#xA;UPDATE dpa&#xA;SET ES_ADMINISTRATIVO = CASE WHEN adm.CO_TRAB IS NOT NULL THEN 'SI' ELSE 'NO' END,&#xA;&#x9;ADMINISTRATIVO_ACTIVO = CASE WHEN adm.TI_SITU = 'ACT' THEN 'SI'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; WHEN adm.TI_SITU &lt;&gt; 'ACT' THEN 'NO'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; WHEN adm.TI_SITU IS NULL THEN 'NO ES ADMINISTRATIVO' END&#xA;FROM [dbo].[PDP_DATOS_PERSONA_ANTISPAM] dpa&#xA;&#x9;&#x9;INNER JOIN [pdp].[STGA_CRM_2015_Incident] i on dpa.TicketNumber = i.TicketNumber&#xA;&#x9;&#x9;LEFT JOIN [pdp].[STGA_OFI_TMTRAB_EMPR] adm on i.upc_indecopi_numero = adm.CO_TRAB&#xA;WHERE dpa.ESTADO = 'ENCONTRADO'&#xA;&#xA;&#xA;&#xA;UPDATE dpa&#xA;SET ES_ALUMNO_EPG = CASE WHEN b.cod_persona&#x9;IS NOT NULL OR si.cod_persona IS NOT NULL THEN 'SI' ELSE 'NO' END&#xA;FROM [dbo].[PDP_DATOS_PERSONA_ANTISPAM] dpa&#xA;&#x9;&#x9;INNER JOIN [pdp].[STGA_CRM_2015_Incident] i on dpa.TicketNumber = i.TicketNumber&#xA;&#x9;&#x9;LEFT JOIN [pdp].[STGA_BAN_MATRICULA] b on i.upc_codigodepersona = b.cod_persona&#x9;&#x9;&#xA;&#x9;&#x9;LEFT JOIN [pdp].[STGA_SOC_SI_MATRICULA] si on i.upc_codigodepersona = si.cod_persona&#xA;WHERE dpa.ESTADO = 'ENCONTRADO'&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="DELETE dpa&#xA;FROM [dbo].[PDP_DATOS_PERSONA_ANTISPAM] dpa&#xA;&#x9;&#x9;INNER JOIN [pdp].[STGA_CRM_2015_Incident] i on dpa.TicketNumber = i.TicketNumber&#xA;&#xA;&#xA;INSERT INTO [dbo].[PDP_DATOS_PERSONA_ANTISPAM] (&#xA;&#x9;TICKETNUMBER,&#xA;&#x9;UPC_INDECOPI_EMAILADDRESS1,&#xA;&#x9;UPC_UNIDADNEGOCIOIDNAME,&#xA;&#x9;UPC_ARCO_PETICIONREVOCATORIA,&#xA;&#x9;ESTADO,&#xA;&#x9;EMAIL_PRINCIPAL,&#xA;&#x9;EMAIL_SECUNDARIO,&#xA;&#x9;COD_PERSONA,&#xA;&#x9;ESTADO_PERSONA,&#xA;&#x9;TIENE_CORREO_PRINCIPAL,&#xA;&#x9;TIENE_CORREO_SECUNDARIO,&#xA;&#x9;TIENE_TELEFONO_FIJO,&#xA;&#x9;TIENE_CELULAR,&#xA;&#x9;TIENE_TELEFONO_OPCIONAL,&#xA;&#x9;ES_POSTULANTE,&#xA;&#x9;ES_INCORPORADO,&#xA;&#x9;ES_ALUMNO_AC_FC,&#xA;&#x9;ES_EGRESADO,&#xA;&#x9;ES_DOCENTE,&#xA;&#x9;ULTIMO_PERIODO_MATRICULA,&#xA;&#x9;DOCENTE_ACTIVO,&#xA;&#x9;PARENTESCO,&#xA;&#x9;FEC_CARGA&#xA;)&#xA;&#xA;&#xA;SELECT i.TicketNumber,&#xA;&#x9;&#x9;i.upc_indecopi_emailaddress1,&#xA;&#x9;&#x9;i.upc_unidadnegocioidname,&#xA;&#x9;&#x9;i.upc_arco_peticionrevocatoria,&#xA;&#x9;&#x9;CASE WHEN dp_mo.COD_PERSONA IS NOT NULL THEN 'ENCONTRADO'&#xA;&#x9;&#x9;&#x9; ELSE 'NO ENCONTRADO'&#xA;&#x9;&#x9;END AS ESTADO,&#xA;&#x9;&#x9;dp_mo.EMAIL_PRINCIPAL,&#xA;&#x9;&#x9;dp_mo.EMAIL_SECUNDARIO,&#xA;&#x9;&#x9;dp_mo.COD_PERSONA,&#xA;&#x9;&#x9;dp_mo.ESTADO_PERSONA,&#xA;&#x9;&#x9;dp_mo.TIENE_CORREO_PRINCIPAL,&#xA;&#x9;&#x9;dp_mo.TIENE_CORREO_SECUNDARIO,&#xA;&#x9;&#x9;dp_mo.TIENE_TELEFONO_FIJO,&#xA;&#x9;&#x9;dp_mo.TIENE_CELULAR,&#xA;&#x9;&#x9;dp_mo.TIENE_TELEFONO_OPCIONAL,&#xA;&#x9;&#x9;dp_mo.ES_POSTULANTE,&#xA;&#x9;&#x9;dp_mo.ES_INCORPORADO,&#xA;&#x9;&#x9;dp_mo.ES_ALUMNO_AC_FC,&#xA;&#x9;&#x9;dp_mo.ES_EGRESADO,&#xA;&#x9;&#x9;dp_mo.ES_DOCENTE,&#xA;&#x9;&#x9;dp_mo.ULTIMO_PERIODO_MATRICULA,&#xA;&#x9;&#x9;dp_mo.DOCENTE_ACTIVO,&#xA;&#x9;&#x9;dp_mo.PARENTESCO,&#xA;&#x9;&#x9;GETDATE() AS FEC_CARGA&#xA;FROM [pdp].[STGA_CRM_2015_Incident] i&#xA;&#x9;&#x9;LEFT JOIN [pdp].[STGA_SOC_MO_DATOS_PERSONA] dp_mo &#xA;&#x9;&#x9;&#x9;on Case When i.upc_indecopi_tipodedocumento = 1 Then 'DNI'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;When i.upc_indecopi_tipodedocumento = 2 Then 'PAS'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;When i.upc_indecopi_tipodedocumento = 3 Then 'CEX'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Else 'OTRO'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;End = dp_mo.TIPO_DOCUMENTO AND i.upc_indecopi_numero = dp_mo.DOCUMEN_IDENTIDA&#xA;&#xA;&#xA;UPDATE dpa&#xA;SET ES_ADMINISTRATIVO = CASE WHEN adm.CO_TRAB IS NOT NULL THEN 'SI' ELSE 'NO' END,&#xA;&#x9;ADMINISTRATIVO_ACTIVO = CASE WHEN adm.TI_SITU = 'ACT' THEN 'SI'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; WHEN adm.TI_SITU &lt;&gt; 'ACT' THEN 'NO'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; WHEN adm.TI_SITU IS NULL THEN 'NO ES ADMINISTRATIVO' END&#xA;FROM [dbo].[PDP_DATOS_PERSONA_ANTISPAM] dpa&#xA;&#x9;&#x9;INNER JOIN [pdp].[STGA_CRM_2015_Incident] i on dpa.TicketNumber = i.TicketNumber&#xA;&#x9;&#x9;LEFT JOIN [pdp].[STGA_OFI_TMTRAB_EMPR] adm on i.upc_indecopi_numero = adm.CO_TRAB&#xA;WHERE dpa.ESTADO = 'ENCONTRADO'&#xA;&#xA;&#xA;&#xA;UPDATE dpa&#xA;SET ES_ALUMNO_EPG = CASE WHEN b.cod_persona&#x9;IS NOT NULL OR si.cod_persona IS NOT NULL THEN 'SI' ELSE 'NO' END&#xA;FROM [dbo].[PDP_DATOS_PERSONA_ANTISPAM] dpa&#xA;&#x9;&#x9;INNER JOIN [pdp].[STGA_CRM_2015_Incident] i on dpa.TicketNumber = i.TicketNumber&#xA;&#x9;&#x9;LEFT JOIN [pdp].[STGA_BAN_MATRICULA] b on i.upc_codigodepersona = b.cod_persona&#x9;&#x9;&#xA;&#x9;&#x9;LEFT JOIN [pdp].[STGA_SOC_SI_MATRICULA] si on i.upc_codigodepersona = si.cod_persona&#xA;WHERE dpa.ESTADO = 'ENCONTRADO'&#xA;&#xA;&#xA;UPDATE dpa&#xA;SET RECOMIENDA_BORRAR = &#xA;&#x9;&#x9;CASE WHEN ES_POSTULANTE = 'NO' AND ES_INCORPORADO = 'NO' AND ES_ALUMNO_AC_FC = 'NO' AND&#xA;&#x9;&#x9;&#x9;&#x9;  ES_ALUMNO_EPG = 'NO' AND ES_EGRESADO = 'NO' AND ES_DOCENTE = 'NO' AND ES_ADMINISTRATIVO = 'NO' AND&#xA;&#x9;&#x9;&#x9;&#x9;  PARENTESCO = 'NO' AND ULTIMO_PERIODO_MATRICULA = 'NO ES ALUMNO PREGRADO/ EPE' AND&#xA;&#x9;&#x9;&#x9;&#x9;  DOCENTE_ACTIVO = 'NO ES DOCENTE' AND ADMINISTRATIVO_ACTIVO = 'NO ES ADMINISTRATIVO' THEN 'SI'&#xA;&#x9;&#x9;&#x9; ELSE 'NO'&#xA;&#x9;&#x9;END&#xA;FROM [dbo].[PDP_DATOS_PERSONA_ANTISPAM] dpa&#xA;WHERE dpa.ESTADO = 'ENCONTRADO'&#xA;&#xA;&#xA;&#xA;UPDATE dpa&#xA;SET DETALLE = CASE WHEN ES_ALUMNO_AC_FC &lt;&gt; 'NO' THEN 'ES_ALUMNO_AC_FC = ' + ES_ALUMNO_AC_FC ELSE '' END + ' | ' + &#xA;&#x9;&#x9;&#x9;  CASE WHEN ULTIMO_PERIODO_MATRICULA &lt;&gt; 'NO ES ALUMNO PREGRADO/ EPE' THEN 'ULTIMO_PERIODO_MATRICULA = ' + ULTIMO_PERIODO_MATRICULA ELSE '' END&#xA;FROM [dbo].[PDP_DATOS_PERSONA_ANTISPAM] dpa&#xA;WHERE dpa.ESTADO = 'ENCONTRADO' AND RECOMIENDA_BORRAR = 'NO'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -4223,7 +4270,7 @@ namespace ST_98d1ec56638e441cbf98e98c3cabfa7e
     <msb:CodeName>ST_980b082b80f84ded8c77db20cc2f4677</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>ST_980b082b80f84ded8c77db20cc2f4677</msb:DisplayName>
-    <msb:ProjectId>{C7CAAF43-FAA2-4D2B-B1FB-EF6FE732A9D7}</msb:ProjectId>
+    <msb:ProjectId>{FE999FBC-7CB8-4CD2-97EE-A0DFB749D427}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="ST_980b082b80f84ded8c77db20cc2f4677.csproj" />
@@ -4401,7 +4448,7 @@ namespace ST_98d1ec56638e441cbf98e98c3cabfa7e.Properties {
               <BinaryItem
                 Name="ST_980b082b80f84ded8c77db20cc2f4677.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAO48dGEAAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAAajIA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAAOB8GEAAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAAajIA
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAABgyAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -4438,7 +4485,7 @@ AB4BUQDpANsFVQB5AMQEWwD5AMQEYwD5AC4EaQD5AGsAbgAJAcQEdQD5AK0FewD5AGYAggDJAAAG
 AQBxAMQEBgCRAMQEBgAZAewAiAAZAUEGkQCZAMQElwC5AMQEBgAIABQAsQAIABgAtgApAHMAHgEu
 AAsA9gAuABMA/wAuABsAHgEuACMAJwEuACsAUAEuADMAUAEuADsAUAEuAEMAJwEuAEsAVgEuAFMA
 UAEuAFsAbQFDAGMAtgBJAHMAHgFhAHsAtgBjAGsAtgAbAAMAAQAEAAMAAAC0BOcAAABXAewAAAD4
-BfEAAgAEAAMAAgAFAAUAAQAGAAUAAgAHAAcABIAAAAEAAAAeHw9TAAAAAAAACQAAAAQAAAAAAAAA
+BfEAAgAEAAMAAgAFAAUAAQAGAAUAAgAHAAcABIAAAAEAAAB8H5l+AAAAAAAACQAAAAQAAAAAAAAA
 AAAAAJ8AXQAAAAAADwAAAAAAAAAAAAAAqAB0AwAAAAAEAAAAAAAAAAAAAACfAEUEAAAAAA8AAAAA
 AAAAAAAAAKgANgAAAAAAAAAAAAEAAAAVBQAABQACAAAAAAAAVG9JbnQzMgBTVF85ODBiMDgyYjgw
 Zjg0ZGVkOGM3N2RiMjBjYzJmNDY3NwA8TW9kdWxlPgBNaWNyb3NvZnQuU3FsU2VydmVyLk1hbmFn
@@ -4478,7 +4525,7 @@ ACAAACsuAGQAdABzAHgAIAAtACAARQBKAEUAQwBVAFQAQQBEAE8AIABFAEwAIAABE1AAYQBjAGsA
 YQBnAGUAOgAgAAAlTQBlAG4AcwBhAGoAZQAgAGQAZQAgAEUAcgByAG8AcgA6ACAAAAcgAC0AIAAB
 cVMAVABfADkAOABkADEAZQBjADUANgA2ADMAOABlADQANAAxAGMAYgBmADkAOABlADkAOABjADMA
 YwBhAGIAZgBhADcAZQAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAA
-ALrtxTX8etZJhNSGKEhCxzsABCABAQgDIAABBSABARERBCABAQ4FIAEBEVUQBw0OCA4ODg4ODg4O
+AN/L1Ke3qU5OlXwDmKrAHkwABCABAQgDIAABBSABARERBCABAQ4FIAEBEVUQBw0OCA4ODg4ODg4O
 Dg4SPQQgABJlBCAAEmkFIAESbRwDIAAcAyAADgQAAQgcBwAEDg4ODg4DAAAOBQABDh0OByAEAQ4O
 Dg4FIAIBDggEIAEBAgYgAQERgIEFIAIBDg4GIAEBEoCJBSABARI9CAABEoCNEYCRBSAAEoCVByAC
 AQ4SgJUIt3pcVhk04IkIiYRdzYCAzJEEAAAAAAQBAAAAAwYSTQMGElEDBhIQAgYIAwYRFAQAABJN
@@ -4500,14 +4547,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
 SAAAAFhAAAAaBAAAAAAAAAAAAAAaBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
-AAAAvQTv/gAAAQAAAAEAD1MeHwAAAQAPUx4fPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
+AAAAvQTv/gAAAQAAAAEAmX58HwAAAQCZfnwfPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
 AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
 AAAAAAAAALAEegMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAVgMAAAEAMAAwADAA
 MAAwADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBu
 AHkATgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAA
 AABTAFQAXwA5ADgAZAAxAGUAYwA1ADYANgAzADgAZQA0ADQAMQBjAGIAZgA5ADgAZQA5ADgAYwAz
 AGMAYQBiAGYAYQA3AGUAAAA+AA8AAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4A
-NwA5ADYANgAuADIAMQAyADYAMwAAAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABT
+OAAwADYAMAAuADMAMgA0ADAAOQAAAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABT
 AFQAXwA5ADgAMABiADAAOAAyAGIAOAAwAGYAOAA0AGQAZQBkADgAYwA3ADcAZABiADIAMABjAGMA
 MgBmADQANgA3ADcALgBkAGwAbAAAAEgAEgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgAdAAA
 AEMAbwBwAHkAcgBpAGcAaAB0ACAAQAAgACAAMgAwADIAMAAAACoAAQABAEwAZQBnAGEAbABUAHIA
@@ -4516,8 +4563,8 @@ AG0AZQAAAFMAVABfADkAOAAwAGIAMAA4ADIAYgA4ADAAZgA4ADQAZABlAGQAOABjADcANwBkAGIA
 MgAwAGMAYwAyAGYANAA2ADcANwAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBl
 AAAAAABTAFQAXwA5ADgAZAAxAGUAYwA1ADYANgAzADgAZQA0ADQAMQBjAGIAZgA5ADgAZQA5ADgA
 YwAzAGMAYQBiAGYAYQA3AGUAAABCAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAx
-AC4AMAAuADcAOQA2ADYALgAyADEAMgA2ADMAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYA
-ZQByAHMAaQBvAG4AAAAxAC4AMAAuADcAOQA2ADYALgAyADEAMgA2ADMAAAAAAAAAAAAAAAAAAAAA
+AC4AMAAuADgAMAA2ADAALgAzADIANAAwADkAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYA
+ZQByAHMAaQBvAG4AAAAxAC4AMAAuADgAMAA2ADAALgAzADIANAAwADkAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -4551,7 +4598,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{785AD69C-A1ED-4416-8DD7-0E56CAB85ADA}"
-              SQLTask:SqlStatementSource="SELECT &#xA;(SELECT VALOR FROM PARAMETROS&#xA;WHERE COD_PARAMETRO ='EMAIL_TO_INGLES_WETALK') AS v_EmailTo,&#xA;(SELECT VALOR FROM PARAMETROS&#xA;WHERE COD_PARAMETRO='EMAIL_FROM') AS v_EmailFrom;"
+              SQLTask:SqlStatementSource="SELECT  (SELECT VALOR FROM PDP.PARAMETROS WHERE COD_PARAMETRO = 'EMAIL_FROM') AS EmailFrom,&#xA;&#x9;&#x9;(SELECT VALOR FROM PDP.PARAMETROS WHERE COD_PARAMETRO = 'EMAIL_TO') AS EmailTo"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -4633,27 +4680,27 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="211,42"
           Id="Package\Lectura de PARAMETROS"
-          TopLeft="557,163.111111111112" />
+          TopLeft="569,109.111111111112" />
         <NodeLayout
           Size="278,42"
           Id="Package\Log Fin de Ejecución - Ejecución Exitosa"
-          TopLeft="532,823.111111111115" />
+          TopLeft="534,698.111111111115" />
         <NodeLayout
           Size="192,42"
           Id="Package\Log Inicio de Ejecución"
-          TopLeft="565.555555555556,83.7777777777778" />
+          TopLeft="577.555555555556,29.7777777777778" />
         <NodeLayout
           Size="302,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_BAN_MATRICULA"
-          TopLeft="789,162" />
+          TopLeft="812,160" />
         <NodeLayout
           Size="310,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_CRM_2015_Incident"
-          TopLeft="73,95" />
+          TopLeft="60,94" />
         <NodeLayout
           Size="317,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_OFI_TMTRAB_EMPR"
-          TopLeft="417,169" />
+          TopLeft="423,169" />
         <NodeLayout
           Size="361,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA"
@@ -4661,41 +4708,41 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="319,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_SI_MATRICULA"
-          TopLeft="782,81" />
+          TopLeft="799,85" />
         <NodeLayout
           Size="281,42"
           Id="Package\Sequence Container\SQLT - Carga Tabla CRM_2015_Incident"
-          TopLeft="93,174" />
+          TopLeft="79,174" />
         <NodeLayout
           Size="369,42"
           Id="Package\Sequence Container\SQLT - Carga Tabla PDP_DATOS_PERSONA_ANTISPAM"
-          TopLeft="803,250" />
+          TopLeft="784,257" />
         <NodeLayout
           Size="213,42"
           Id="Package\Sequence Container\SQLT - Limpieza de Tablas"
-          TopLeft="120,18" />
+          TopLeft="109,16" />
         <NodeLayout
           Size="307,42"
           Id="Package\Sequence Container\SQLT - Lista de COD_PERSONA de Personas"
-          TopLeft="413,84" />
+          TopLeft="432,88" />
         <NodeLayout
           Size="285,42"
           Id="Package\Sequence Container\SQLT - Lista de Documentos de Personas"
           TopLeft="75,252" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
-          TopLeft="227.25,60">
+          TopLeft="215.25,58">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,35"
+              EndConnector="0,36"
               Start="0,0"
-              End="0,27.5">
+              End="0,28.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.5" />
+                    End="0,28.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4706,18 +4753,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="230.75,137">
+          TopLeft="217.25,136">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,37"
+              EndConnector="0,38"
               Start="0,0"
-              End="0,29.5">
+              End="0,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.5" />
+                    End="0,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4728,30 +4775,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
-          TopLeft="233.5,216">
+          TopLeft="218.5,216">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-16,36"
+              EndConnector="0,36"
               Start="0,0"
-              End="-16,28.5">
+              End="0,28.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14"
-                    Point2="0,18"
-                    Point3="-4,18" />
-                  <mssgle:LineSegment
-                    End="-12,18" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-12,18"
-                    Point2="-16,18"
-                    Point3="-16,22" />
-                  <mssgle:LineSegment
-                    End="-16,28.5" />
+                    End="0,28.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4784,30 +4819,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
-          TopLeft="587.5,256">
+          TopLeft="584.5,256">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-12,-45"
+              EndConnector="0,-45"
               Start="0,0"
-              End="-12,-37.5">
+              End="0,-37.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-18.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-18.5"
-                    Point2="0,-22.5"
-                    Point3="-4,-22.5" />
-                  <mssgle:LineSegment
-                    End="-8,-22.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-8,-22.5"
-                    Point2="-12,-22.5"
-                    Point3="-12,-26.5" />
-                  <mssgle:LineSegment
-                    End="-12,-37.5" />
+                    End="0,-37.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4818,30 +4841,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
-          TopLeft="575.5,169">
+          TopLeft="583.5,169">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9,-43"
+              EndConnector="0,-39"
               Start="0,0"
-              End="-9,-35.5">
+              End="0,-31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-17.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-17.5"
-                    Point2="0,-21.5"
-                    Point3="-4,-21.5" />
-                  <mssgle:LineSegment
-                    End="-5,-21.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5,-21.5"
-                    Point2="-9,-21.5"
-                    Point3="-9,-25.5" />
-                  <mssgle:LineSegment
-                    End="-9,-35.5" />
+                    End="0,-31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4852,18 +4863,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
-          TopLeft="720,103.5">
+          TopLeft="739,107.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="62,0"
+              EndConnector="60,0"
               Start="0,0"
-              End="54.5,0">
+              End="52.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="54.5,0" />
+                    End="52.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4874,18 +4885,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 7]"
-          TopLeft="940.75,123">
+          TopLeft="960.75,127">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,39"
+              EndConnector="0,33"
               Start="0,0"
-              End="0,31.5">
+              End="0,25.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5" />
+                    End="0,25.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4896,30 +4907,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 8]"
-          TopLeft="940,204">
+          TopLeft="965.75,202">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="47.5,46"
+              EndConnector="0,55"
               Start="0,0"
-              End="47.5,38.5">
+              End="0,47.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19"
-                    Point2="0,23"
-                    Point3="4,23" />
-                  <mssgle:LineSegment
-                    End="43.5,23" />
-                  <mssgle:CubicBezierSegment
-                    Point1="43.5,23"
-                    Point2="47.5,23"
-                    Point3="47.5,27" />
-                  <mssgle:LineSegment
-                    End="47.5,38.5" />
+                    End="0,47.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4934,10 +4933,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           PanelSize="1262,372"
           Size="1262,415"
           Id="Package\Sequence Container"
-          TopLeft="63,274" />
+          TopLeft="44,184" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="662.027777777778,125.777777777778">
+          TopLeft="674.027777777778,71.7777777777778">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4959,30 +4958,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="662.5,205.111111111112">
+          TopLeft="674.75,151.111111111112">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="31.5,68.888888888888"
+              EndConnector="0,32.888888888888"
               Start="0,0"
-              End="31.5,61.388888888888">
+              End="0,25.388888888888">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.444444444444" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.444444444444"
-                    Point2="0,34.444444444444"
-                    Point3="4,34.444444444444" />
-                  <mssgle:LineSegment
-                    End="27.5,34.444444444444" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27.5,34.444444444444"
-                    Point2="31.5,34.444444444444"
-                    Point3="31.5,38.444444444444" />
-                  <mssgle:LineSegment
-                    End="31.5,61.388888888888" />
+                    End="0,25.388888888888" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4993,30 +4980,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="694,689">
+          TopLeft="674,599">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-23,134.111111111115"
+              EndConnector="0,99.111111111115"
               Start="0,0"
-              End="-23,126.611111111115">
+              End="0,91.611111111115">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,63.0555555555575" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,63.0555555555575"
-                    Point2="0,67.0555555555575"
-                    Point3="-4,67.0555555555575" />
-                  <mssgle:LineSegment
-                    End="-19,67.0555555555575" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-19,67.0555555555575"
-                    Point2="-23,67.0555555555575"
-                    Point3="-23,71.0555555555575" />
-                  <mssgle:LineSegment
-                    End="-23,126.611111111115" />
+                    End="0,91.611111111115" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5124,19 +5099,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     design-time-name="Package\Sequence Container\DFT - Carga Tabla STGA_BAN_MATRICULA">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="167,42"
-          Id="Package\Sequence Container\DFT - Carga Tabla STGA_BAN_MATRICULA\Calcula fec_carga"
-          TopLeft="461,180" />
+          Size="217,42"
+          Id="Package\Sequence Container\DFT - Carga Tabla STGA_BAN_MATRICULA\Lee Select Matricula Banner"
+          TopLeft="484,47" />
         <NodeLayout
           Size="274,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_BAN_MATRICULA\Inserta Tabla STGA_BAN_MATRICULA"
           TopLeft="473,295" />
         <NodeLayout
-          Size="217,42"
-          Id="Package\Sequence Container\DFT - Carga Tabla STGA_BAN_MATRICULA\Lee Select Matricula Banner"
-          TopLeft="484,47" />
+          Size="167,42"
+          Id="Package\Sequence Container\DFT - Carga Tabla STGA_BAN_MATRICULA\Calcula fec_carga"
+          TopLeft="461,180" />
         <EdgeLayout
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_BAN_MATRICULA.Paths[OLE DB Source Output]"
           TopLeft="592.5,89">
@@ -5168,7 +5143,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5202,7 +5179,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5410,10 +5389,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="334,42"
-          Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA"
-          TopLeft="328,367" />
-        <NodeLayout
           Size="173,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Calcula Fec_Carga"
           TopLeft="396,208" />
@@ -5421,40 +5396,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           Size="228,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA"
           TopLeft="393,55" />
-        <EdgeLayout
-          Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA.Paths[Derived Column Output]"
-          TopLeft="482.5,250">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="12.5,117"
-              Start="0,0"
-              End="12.5,109.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,54.5"
-                    Point2="0,58.5"
-                    Point3="4,58.5" />
-                  <mssgle:LineSegment
-                    End="8.5,58.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="8.5,58.5"
-                    Point2="12.5,58.5"
-                    Point3="12.5,62.5" />
-                  <mssgle:LineSegment
-                    End="12.5,109.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA.Paths[OLE DB Source Output]"
           TopLeft="507,97">
@@ -5489,17 +5430,35 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination"
+          TopLeft="395,355" />
+        <EdgeLayout
+          Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA.Paths[Derived Column Output]"
+          TopLeft="485.25,250">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,105"
+              Start="0,0"
+              End="0,97.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,97.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Inserta Tabla STGA_SOC_MO_DATOS_PERSONA">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA">
     <Properties>
@@ -5512,7 +5471,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     design-time-name="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_SI_MATRICULA">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="191,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_SI_MATRICULA\Lee tabla MATRICULA"
@@ -5544,7 +5503,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5566,7 +5527,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5582,6 +5545,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_SI_MATRICULA\Inserta Tabla STGA_SOC_SI_MATRICULA">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

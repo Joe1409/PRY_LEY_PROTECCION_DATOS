@@ -1,0 +1,3 @@
+DTEXEC /F "C:\DATOS\PRY_LEY_PROTECCION_DATOS\PRY_LEY_PROTECCION_DATOS\Package_LeyProteccionDatos.dtsx"
+
+pause
