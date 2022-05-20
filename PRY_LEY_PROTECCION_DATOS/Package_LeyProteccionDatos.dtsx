@@ -13,8 +13,8 @@
   DTS:ObjectName="Package_LeyProteccionDatos"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="257"
-  DTS:VersionGUID="{B0B0D0E8-8BE7-48DE-8F58-3A88014F4BBE}">
+  DTS:VersionBuild="266"
+  DTS:VersionGUID="{8AB021D2-4523-4391-A431-2533044B688D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,7 @@
       DTS:ObjectName="Conn_BANNER">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=10.10.3.7/UPCDEVL;User ID=SASPA_DATATRANSFER;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;">
+          DTS:ConnectionString="Data Source=SVRPRDBNRBD1/UPCPRD;User ID=ISINTCRMCOM;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"></DTS:Password>
@@ -39,7 +39,7 @@
       DTS:ObjectName="Conn_CRM2015">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=10.10.0.211;User ID=usrdevbdicrm2015;Initial Catalog=CRMDEV01_MSCRM;Provider=SQLNCLI11.1;Auto Translate=False;">
+          DTS:ConnectionString="Data Source=10.10.1.50;User ID=usrprodbdicrm2015;Initial Catalog=UPCCRMSERV_MSCRM;Provider=SQLNCLI11.1;Auto Translate=False;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"></DTS:Password>
@@ -72,7 +72,7 @@
       DTS:ObjectName="Conn_OFISIS">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=SVRRHBDMO1;User ID=ISINTCRMCOM;Initial Catalog=OFIPLAN;Provider=SQLNCLI11.1;Auto Translate=False;">
+          DTS:ConnectionString="Data Source=SVRPRDRHBDMO1;User ID=ISINTCRMCOM;Initial Catalog=OFIPLAN;Provider=SQLNCLI11.1;Auto Translate=False;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"></DTS:Password>
@@ -86,7 +86,7 @@
       DTS:ObjectName="Conn_REPINTETL">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=172.36.0.23;User ID=Isintcrmcom;Initial Catalog=REPINTETL;Application Name=SSIS-Package_Ingles_WeTalk-{785AD69C-A1ED-4416-8DD7-0E56CAB85ADA}172.36.0.23.REPINTETL.Isintcrmcom;">
+          DTS:ConnectionString="Data Source=10.10.0.204;User ID=Isintcrmcom;Initial Catalog=REPINTETL;Application Name=SSIS-Package_Ingles_WeTalk-{785AD69C-A1ED-4416-8DD7-0E56CAB85ADA}172.36.0.23.REPINTETL.Isintcrmcom;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"></DTS:Password>
@@ -100,7 +100,7 @@
       DTS:ObjectName="Conn_SOCRATES_MO">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=SVRDESE2.upc.edu.pe/DESE2.upc.edu.pe;User ID=PROVZATGEI01;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;">
+          DTS:ConnectionString="Data Source=prod1/PROD;User ID=ISINTCRMCOM;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"></DTS:Password>
@@ -114,7 +114,7 @@
       DTS:ObjectName="Conn_SOCRATES_SI">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=SVRDESI2.upc.edu.pe/DESI2.upc.edu.pe;User ID=ISINTCRMCOM;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;">
+          DTS:ConnectionString="Data Source=PRODSI2/PRODSI2.upc.edu.pe;User ID=ISINTCRMCOM;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"></DTS:Password>
@@ -1492,7 +1492,7 @@ And a.cod_persona in ()</DTS:VariableValue>
                         <externalMetadataColumn
                           refId="Package\Sequence Container\DFT - Carga Tabla STGA_CRM_2015_Incident\Inserta Tabla CRM_2015_Incident.Inputs[ADO NET Destination Input].ExternalColumns[upc_arco_peticionrevocatoria]"
                           dataType="wstr"
-                          length="100"
+                          length="2147483647"
                           name="upc_arco_peticionrevocatoria" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\DFT - Carga Tabla STGA_CRM_2015_Incident\Inserta Tabla CRM_2015_Incident.Inputs[ADO NET Destination Input].ExternalColumns[fec_carga]"
@@ -1821,6 +1821,7 @@ where i.CaseOriginCode = 11 and i.StateCode = 0</property>
         <DTS:Executable
           DTS:refId="Package\Sequence Container\DFT - Carga Tabla STGA_OFI_TMTRAB_EMPR"
           DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
           DTS:Description="Data Flow Task"
           DTS:DTSID="{C5923ED9-62C0-4BC7-A340-1A9A4973C9D8}"
           DTS:ExecutableType="Microsoft.Pipeline"
@@ -3740,7 +3741,7 @@ where i.CaseOriginCode = 11 and i.StateCode = 0</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{785AD69C-A1ED-4416-8DD7-0E56CAB85ADA}"
-              SQLTask:SqlStatementSource="TRUNCATE TABLE pdp.STGA_CRM_2015_Incident&#xA;TRUNCATE TABLE pdp.STGA_SOC_MO_DATOS_PERSONA&#xA;TRUNCATE TABLE pdp.STGA_OFI_TMTRAB_EMPR" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="TRUNCATE TABLE pdp.STGA_CRM_2015_Incident&#xA;TRUNCATE TABLE pdp.STGA_SOC_MO_DATOS_PERSONA&#xA;TRUNCATE TABLE pdp.STGA_OFI_TMTRAB_EMPR&#xA;TRUNCATE TABLE pdp.STGA_SOC_SI_MATRICULA&#xA;TRUNCATE TABLE pdp.STGA_BAN_MATRICULA" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -4696,7 +4697,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="310,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_CRM_2015_Incident"
-          TopLeft="60,94" />
+          TopLeft="60,93" />
         <NodeLayout
           Size="317,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_OFI_TMTRAB_EMPR"
@@ -4704,7 +4705,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="361,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA"
-          TopLeft="407,256" />
+          TopLeft="406,256" />
         <NodeLayout
           Size="319,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_SI_MATRICULA"
@@ -4735,14 +4736,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,36"
+              EndConnector="0,35"
               Start="0,0"
-              End="0,28.5">
+              End="0,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.5" />
+                    End="0,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4753,18 +4754,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="217.25,136">
+          TopLeft="217.25,135">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38"
+              EndConnector="0,39"
               Start="0,0"
-              End="0,30.5">
+              End="0,31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.5" />
+                    End="0,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4801,14 +4802,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="47,0"
+              EndConnector="46,0"
               Start="0,0"
-              End="39.5,0">
+              End="38.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="39.5,0" />
+                    End="38.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4819,7 +4820,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
-          TopLeft="584.5,256">
+          TopLeft="584,256">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5007,7 +5008,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     design-time-name="Package.EventHandlers[OnError]">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="238,42"
           Id="Package.EventHandlers[OnError]\Envía Correo - Error en Package"
@@ -5051,9 +5052,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5087,9 +5086,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5099,7 +5096,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     design-time-name="Package\Sequence Container\DFT - Carga Tabla STGA_BAN_MATRICULA">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="217,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_BAN_MATRICULA\Lee Select Matricula Banner"
@@ -5143,9 +5140,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5179,9 +5174,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5207,7 +5200,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     design-time-name="Package\Sequence Container\DFT - Carga Tabla STGA_CRM_2015_Incident">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="246,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_CRM_2015_Incident\Inserta Tabla CRM_2015_Incident"
@@ -5239,9 +5232,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5263,9 +5254,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5389,13 +5378,17 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="173,42"
-          Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Calcula Fec_Carga"
-          TopLeft="396,208" />
-        <NodeLayout
           Size="228,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Lee Select DATOS PERSONA"
           TopLeft="393,55" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination"
+          TopLeft="395,355" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\Calcula Fec_Carga"
+          TopLeft="396,208" />
         <EdgeLayout
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA.Paths[OLE DB Source Output]"
           TopLeft="507,97">
@@ -5430,10 +5423,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination"
-          TopLeft="395,355" />
         <EdgeLayout
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA.Paths[Derived Column Output]"
           TopLeft="485.25,250">
@@ -5467,11 +5456,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_SI_MATRICULA">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="191,42"
           Id="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_SI_MATRICULA\Lee tabla MATRICULA"
@@ -5503,9 +5500,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5527,9 +5522,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5545,14 +5538,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_SI_MATRICULA\Inserta Tabla STGA_SOC_SI_MATRICULA">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT - Carga Tabla STGA_SOC_MO_DATOS_PERSONA\ADO NET Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
